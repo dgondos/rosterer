@@ -13,13 +13,13 @@ using namespace Rosterer;
 int main(int argc, char** argv) {
     std::list<Solution*> tabuList = std::list<Solution*>();
 
-    Solution bestSolution = InitialRosterManager::getInitialSolution();
-    Solution bestCandidate = InitialRosterManager::getInitialSolution();
+    Solution bestSolution = InitialRosterManager::instance().getInitialSolution();
+    Solution bestCandidate = InitialRosterManager::instance().getInitialSolution();
 
     tabuList.push_back(&bestCandidate);
 
-    for (int day = 0; day < InitialRosterManager::getNbrDaysOptimized(); day++) {
-        std::cout << "Day " << day << ": daytime: " << StaffManager::getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << StaffManager::getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
+    for (int day = 0; day < InitialRosterManager::instance().getNbrDaysOptimized(); day++) {
+        std::cout << "Day " << day << ": daytime: " << StaffManager::instance().getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << StaffManager::instance().getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
     }
 
     std::cout << "initial cost: " << bestSolution.getCost() <<  std::endl;
@@ -79,7 +79,7 @@ int main(int argc, char** argv) {
         iterations++;
     }
 
-    for (int day = 0; day < InitialRosterManager::getNbrDaysOptimized(); day++) {
-        std::cout << "Day " << day << ": daytime: " << StaffManager::getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << StaffManager::getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
+    for (int day = 0; day < InitialRosterManager::instance().getNbrDaysOptimized(); day++) {
+        std::cout << "Day " << day << ": daytime: " << StaffManager::instance().getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << StaffManager::instance().getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
     }
 }

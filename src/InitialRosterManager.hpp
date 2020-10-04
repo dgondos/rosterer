@@ -11,15 +11,24 @@ namespace Rosterer
     class InitialRosterManager
     {
     public:
-        static const Solution& getInitialSolution();
-        static bool isWeekend(int idxDay);
-        static bool isHolidayBLR(int idxDay);
-        static bool isHolidayNCE(int idxDay);
-        static bool isHolidaySYD(int idxDay);
-        static int getNbrDaysOptimized();
-        static int getFirstSundayIdx();
+
+        static InitialRosterManager& instance();
+        InitialRosterManager(InitialRosterManager const&) = delete;
+        void operator=(InitialRosterManager const&) = delete;
+
+        const Solution& getInitialSolution() const;
+        bool isWeekend(int idxDay) const;
+        bool isHolidayBLR(int idxDay) const;
+        bool isHolidayNCE(int idxDay) const;
+        bool isHolidaySYD(int idxDay) const;
+        int getNbrDaysOptimized() const;
+        int getFirstSundayIdx() const;
     private:
-        static const std::vector<std::vector<bool>>& getCalendar();
+        InitialRosterManager();
+
+        Solution _initialSolution;
+        std::vector<std::vector<bool>> _calendar;
+        int _firstSundayIdx;
     };
 }
 

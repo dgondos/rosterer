@@ -9,7 +9,15 @@ namespace Rosterer
     class StaffManager
     {
     public:
-        static const std::vector<std::string>& getAllStaff();
+        static StaffManager& instance();
+        StaffManager(StaffManager const&) = delete;
+        void operator=(StaffManager const&) = delete;
+
+        const std::vector<std::string>& getAllStaff() const;
+    private:
+        StaffManager();
+
+        std::vector<std::string> _staff;
     };
 }
 

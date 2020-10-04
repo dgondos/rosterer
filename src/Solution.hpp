@@ -10,6 +10,7 @@ namespace Rosterer
     class Solution
     {
     public:
+        Solution() {};
         Solution(std::vector<int>&& nighttimeRoster, std::vector<int>&& daytimeRoster);
 
         const std::vector<int>& getNighttimeRoster() const;

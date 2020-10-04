@@ -8,12 +8,12 @@ std::vector<Solution> MoveGenerator::generateNeighborhood(const Solution& startS
     std::vector<Solution> generatedNeighborhood = std::vector<Solution>();
 
     // generate swaps of full weeks
-    int firstMondayIdx = InitialRosterManager::getFirstSundayIdx() + 1;
+    int firstMondayIdx = InitialRosterManager::instance().getFirstSundayIdx() + 1;
 
     int week1Offs = 0;
-    for (int monday1Idx = InitialRosterManager::getFirstSundayIdx() + 1; monday1Idx < InitialRosterManager::getNbrDaysOptimized(); monday1Idx += 7) {
+    for (int monday1Idx = InitialRosterManager::instance().getFirstSundayIdx() + 1; monday1Idx < InitialRosterManager::instance().getNbrDaysOptimized(); monday1Idx += 7) {
         int week2Offs = 0;
-        for (int monday2Idx = InitialRosterManager::getFirstSundayIdx() + 1; monday2Idx < InitialRosterManager::getNbrDaysOptimized(); monday2Idx += 7) {
+        for (int monday2Idx = InitialRosterManager::instance().getFirstSundayIdx() + 1; monday2Idx < InitialRosterManager::instance().getNbrDaysOptimized(); monday2Idx += 7) {
             std::vector<int> nextNighttimeRoster = startSolution.getNighttimeRoster();
             std::vector<int> nextDaytimeRoster = startSolution.getDaytimeRoster();
 
