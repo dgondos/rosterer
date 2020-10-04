@@ -1,7 +1,6 @@
 #include <Objective.hpp>
 
 #include <InitialRosterManager.hpp>
-#include <StaffManager.hpp>
 
 using namespace Rosterer;
 
@@ -59,7 +58,7 @@ long Objective::minimizeSwapsDuringWeek(const Solution& solution) {
 
 long Objective::maximizeRest(const Solution& solution) {
     // rest is defined as weeks between two sunday assignments
-    std::vector<int> minimumRestWeeksForStaff(StaffManager::instance().getAllStaff().size(), 0);
+    std::vector<int> minimumRestWeeksForStaff(InitialRosterManager::instance().getAllStaff().size(), 0);
 
     for (int sundayIdx = InitialRosterManager::instance().getFirstSundayIdx(); sundayIdx < InitialRosterManager::instance().getNbrDaysOptimized(); sundayIdx += 7) {
         int staffThisSunday = solution.getNighttimeRoster().at(sundayIdx);
@@ -77,7 +76,7 @@ long Objective::maximizeRest(const Solution& solution) {
         }
     }
 
-    int target = StaffManager::instance().getAllStaff().size() - 1; // ideal case: fully sequential assignments
+    int target = InitialRosterManager::instance().getAllStaff().size() - 1; // ideal case: fully sequential assignments
 
     long variance = 0;
     for (std::vector<int>::const_iterator it = minimumRestWeeksForStaff.begin(); it != minimumRestWeeksForStaff.end(); ++it) {
@@ -90,9 +89,9 @@ long Objective::maximizeRest(const Solution& solution) {
 long Objective::maximizeFairness(const Solution& solution) {
     // fairness is defined as equality for assigned nighttime shifts for a staff
 
-    std::vector<int> nbrAssignmentsForStaff(StaffManager::instance().getAllStaff().size(), 0);
+    std::vector<int> nbrAssignmentsForStaff(InitialRosterManager::instance().getAllStaff().size(), 0);
 
-    for (int staffIdx = 0; staffIdx < StaffManager::instance().getAllStaff().size(); staffIdx++) {
+    for (int staffIdx = 0; staffIdx < InitialRosterManager::instance().getAllStaff().size(); staffIdx++) {
         int assignmentsForCurrentStaff = 0;
         for (int dayIdx = 0; dayIdx < InitialRosterManager::instance().getNbrDaysOptimized(); dayIdx++) {
             if (solution.getNighttimeRoster().at(dayIdx) == staffIdx) {
@@ -102,7 +101,7 @@ long Objective::maximizeFairness(const Solution& solution) {
         nbrAssignmentsForStaff[staffIdx] = assignmentsForCurrentStaff;
     }
 
-    double mean = InitialRosterManager::instance().getNbrDaysOptimized() / StaffManager::instance().getAllStaff().size();
+    double mean = InitialRosterManager::instance().getNbrDaysOptimized() / InitialRosterManager::instance().getAllStaff().size();
 
     long variance = 0;
     for (std::vector<int>::const_iterator it = nbrAssignmentsForStaff.begin(); it != nbrAssignmentsForStaff.end(); ++it) {

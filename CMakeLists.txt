@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-set(SOURCE_FILES src/main.cpp src/StaffManager.cpp src/InitialRosterManager.cpp src/Solution.cpp src/Objective.cpp src/MoveGenerator.cpp)
+set(SOURCE_FILES src/main.cpp src/InitialRosterManager.cpp src/Solution.cpp src/Objective.cpp src/MoveGenerator.cpp)
 #set(CMAKE_BUILD_TYPE Debug)
 
 include_directories("src")

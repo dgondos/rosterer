@@ -23,11 +23,13 @@ namespace Rosterer
         bool isHolidaySYD(int idxDay) const;
         int getNbrDaysOptimized() const;
         int getFirstSundayIdx() const;
+        const std::vector<std::string>& getAllStaff() const;
     private:
         InitialRosterManager();
 
         Solution _initialSolution;
         std::vector<std::vector<bool>> _calendar;
+        std::vector<std::string> _staff;
         int _firstSundayIdx;
     };
 }

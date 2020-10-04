@@ -1,4 +1,3 @@
-#include <StaffManager.hpp>
 #include <InitialRosterManager.hpp>
 #include <Objective.hpp>
 #include <MoveGenerator.hpp>
@@ -19,7 +18,7 @@ int main(int argc, char** argv) {
     tabuList.push_back(&bestCandidate);
 
     for (int day = 0; day < InitialRosterManager::instance().getNbrDaysOptimized(); day++) {
-        std::cout << "Day " << day << ": daytime: " << StaffManager::instance().getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << StaffManager::instance().getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
+        std::cout << "Day " << day << ": daytime: " << InitialRosterManager::instance().getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << InitialRosterManager::instance().getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
     }
 
     std::cout << "initial cost: " << bestSolution.getCost() <<  std::endl;
@@ -80,6 +79,6 @@ int main(int argc, char** argv) {
     }
 
     for (int day = 0; day < InitialRosterManager::instance().getNbrDaysOptimized(); day++) {
-        std::cout << "Day " << day << ": daytime: " << StaffManager::instance().getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << StaffManager::instance().getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
+        std::cout << "Day " << day << ": daytime: " << InitialRosterManager::instance().getAllStaff().at(bestSolution.getDaytimeRoster().at(day)) << ", nighttime: " << InitialRosterManager::instance().getAllStaff().at(bestSolution.getNighttimeRoster().at(day)) << std::endl;
     }
 }
