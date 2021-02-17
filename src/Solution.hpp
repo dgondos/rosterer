@@ -15,6 +15,7 @@ namespace Rosterer
 
         const std::vector<int>& getNighttimeRoster() const;
         const std::vector<int>& getDaytimeRoster() const;
+        void setRosters(std::vector<int>&& nighttimeRoster, std::vector<int>&& daytimeRoster);
         const std::string& getID() const;
         long getCost();
     private:

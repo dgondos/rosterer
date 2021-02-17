@@ -12,6 +12,8 @@ using namespace Rosterer;
 int main(int argc, char** argv) {
     std::list<Solution*> tabuList = std::list<Solution*>();
 
+    InitialRosterManager::instance().readInitialSolution();
+
     Solution bestSolution = InitialRosterManager::instance().getInitialSolution();
     Solution bestCandidate = InitialRosterManager::instance().getInitialSolution();
 

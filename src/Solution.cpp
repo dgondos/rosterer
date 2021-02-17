@@ -21,6 +21,11 @@ const std::vector<int>& Solution::getDaytimeRoster() const {
     return _daytimeRoster;
 }
 
+void Solution::setRosters(std::vector<int>&& nighttimeRoster, std::vector<int>&& daytimeRoster) {
+    _nighttimeRoster.swap(nighttimeRoster);
+    _daytimeRoster.swap(daytimeRoster);
+}
+
 const std::string& Solution::getID() const {
     return _id;
 }

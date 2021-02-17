@@ -16,6 +16,7 @@ namespace Rosterer
         InitialRosterManager(InitialRosterManager const&) = delete;
         void operator=(InitialRosterManager const&) = delete;
 
+        void readInitialSolution();
         const Solution& getInitialSolution() const;
         bool isWeekend(int idxDay) const;
         bool isHolidayBLR(int idxDay) const;
@@ -26,6 +27,8 @@ namespace Rosterer
         const std::vector<std::string>& getAllStaff() const;
     private:
         InitialRosterManager();
+        const std::vector<std::string> readStaff() const;
+        void readCalendarAndInitialSolution(Solution& solution, std::vector<std::vector<bool>>& calendar);
 
         Solution _initialSolution;
         std::vector<std::vector<bool>> _calendar;
